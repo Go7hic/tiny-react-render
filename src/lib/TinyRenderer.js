@@ -90,12 +90,10 @@ const hostConfig = {
 const ReactReconcilerInst = ReactReconciler(traceWrap(hostConfig));
 export default {
   render: (reactElement, domElement, callback) => {
-    // Create a root Container if it doesnt exist
     if (!domElement._rootContainer) {
       domElement._rootContainer = ReactReconcilerInst.createContainer(domElement, false);
     }
 
-    // update the root Container
     return ReactReconcilerInst.updateContainer(reactElement, domElement._rootContainer, null, callback);
   }
 };
